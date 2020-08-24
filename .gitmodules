@@ -1,0 +1,6 @@
+[submodule "personal_website"]
+	path = personal_website
+	url = https://github.com/darrylforbes/personal_website
+[submodule "open_when_dockerized"]
+	path = open_when_dockerized
+	url = https://github.com/darrylforbes/open_when_dockerized
