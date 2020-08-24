@@ -1,3 +1,4 @@
-Submodules
-    - Personal Website
-    - Open When
+#Submodules
+
+* Personal Website
+* Open When
