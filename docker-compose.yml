@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    networks:
+      - nginx-network
+    ports:
+      - 80:80
+      - 443:443
+    labels:
+      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+    environment:
+      - DEFAULT_EMAIL=d4bes2000@gmail.com
+    networks:
+      - nginx-network
+    depends_on:
+      - nginx-proxy
+
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.darrylforbes.me
+      - LETSENCRYPT_HOST=whoami.darrylforbes.me
+    networks:
+      - nginx-network
+    depends_on:
+      - nginx-proxy
+
+networks:
+  nginx-network:
+    name: nginx-network
+
+volumes:
+  certs:
+  vhost:
+  html:
