@@ -27,6 +27,13 @@
     * newgrp docker
     * sudo systemctl enable docker
 
-4. Clone web server repo
+4. Install docker compose
+
+    * sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    * sudo chmod +x /usr/local/bin/docker-compose
+    * sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+
+5. Clone web server repo
 
     * git clone --recurse-submodules https://github.com/darrylforbes/web-server
