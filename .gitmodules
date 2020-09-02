@@ -1,6 +1,6 @@
-[submodule "personal_website"]
-	path = personal_website
-	url = https://github.com/darrylforbes/personal_website
 [submodule "happy-appy"]
 	path = happy-appy
 	url = https://github.com/darrylforbes/happy-appy
+[submodule "personal-website"]
+	path = personal-website
+	url = https://github.com/darrylforbes/personal-website
