@@ -30,16 +30,6 @@ services:
     depends_on:
       - nginx-proxy
 
-  whoami:
-    image: jwilder/whoami
-    environment:
-      - VIRTUAL_HOST=whoami.darrylforbes.me
-      - LETSENCRYPT_HOST=whoami.darrylforbes.me
-    networks:
-      - nginx-network
-    depends_on:
-      - nginx-proxy
-
 networks:
   nginx-network:
     name: nginx-network
