@@ -30,9 +30,42 @@ services:
     depends_on:
       - nginx-proxy
 
+  happy-appy-api:
+    image: darrylforbes/happy-appy-api
+    env_file:
+      - ./happy-appy.env.prod
+    networks:
+      - happy-appy-network
+
+  happy-appy-frontend:
+    image: darrylforbes/happy-appy-frontend
+    networks:
+      - happy-appy-network
+
+  happy-appy-nginx:
+    image: darrylforbes/happy-appy-nginx
+    networks:
+      - happy-appy-network
+      - nginx-network
+    depends_on:
+      - happy-appy-api
+      - happy-appy-frontend
+
+  personal-website-nginx:
+    image: darrylforbes/personal-website-nginx
+    networks:
+      - personal-website-network
+      - nginx-network
+    expose:
+      - 80
+
 networks:
   nginx-network:
     name: nginx-network
+  happy-appy-network:
+    name: happy-appy-network
+  personal-website-network:
+    name: personal-website-network
 
 volumes:
   certs:
