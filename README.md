@@ -36,7 +36,7 @@
 
 5. Clone web server repo
 
-    * git clone --recurse-submodules https://github.com/darrylforbes/web-server
+    * git clone https://github.com/darrylforbes/web-server
     * Copy over any needed env files
 
 6. Run "docker-compose up -d"
