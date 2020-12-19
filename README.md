@@ -27,16 +27,21 @@
     * newgrp docker
     * sudo systemctl enable docker
 
-4. Install docker compose
+4. Log in to docker if necessary
+
+    * docker login
+    * Enter username and password
+
+5. Install docker compose
 
     * sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     * sudo chmod +x /usr/local/bin/docker-compose
     * sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 
-5. Clone web server repo
+6. Clone web server repo
 
     * git clone https://github.com/darrylforbes/web-server
     * Copy over any needed env files
 
-6. Run "docker-compose up -d"
+7. Run "docker-compose up -d"
