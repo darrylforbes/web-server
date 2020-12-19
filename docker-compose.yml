@@ -36,6 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 0 * * ?
 
   happy-appy-api:
     image: darrylforbes/happy-appy-api
