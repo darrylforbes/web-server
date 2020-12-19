@@ -51,6 +51,9 @@ services:
 
   happy-appy-nginx:
     image: darrylforbes/happy-appy-nginx
+    environment:
+      - VIRTUAL_HOST=happyappy.darrylforbes.me
+      - LETSENCRYPT_HOST=happyappy.darrylforbes.me
     networks:
       - happy-appy-network
       - nginx-network
@@ -60,6 +63,9 @@ services:
 
   personal-website-nginx:
     image: darrylforbes/personal-website-nginx
+    environment:
+      - VIRTUAL_HOST=www.darrylforbes.me,darrylforbes.me
+      - LETSENCRYPT_HOST=www.darrylforbes.me,darrylforbes.me
     networks:
       - personal-website-network
       - nginx-network
