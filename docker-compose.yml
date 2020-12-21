@@ -74,6 +74,31 @@ services:
     expose:
       - 80
 
+  firefly-iii:
+    image: jc5x/firefly-iii:latest
+    env_file:
+      - firefly-iii.env
+    environment:
+      - VIRTUAL_HOST=money.darrylforbes.me
+    volumes:
+      - firefly-iii-upload:/var/www/html/storage/upload
+    networks:
+      - firefly-iii-network
+      - nginx-network
+    expose:
+      - 80
+    depends_on:
+      - firefly-iii-db
+
+  firefly-iii-db:
+    image: postgres:13-alpine
+    env_file:
+      - firefly-iii-db.env
+    volumes:
+      - firefly-iii-db:/var/lib/pgsql
+    networks:
+      - firefly-iii-network
+
 networks:
   nginx-network:
     name: nginx-network
@@ -81,9 +106,13 @@ networks:
     name: happy-appy-network
   personal-website-network:
     name: personal-website-network
+  firefly-iii-network:
+    name: firefly-iii-network
 
 volumes:
   certs:
   vhost:
   html:
   acme:
+  firefly-iii-upload:
+  firefly-iii-db:
