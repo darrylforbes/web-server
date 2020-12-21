@@ -79,6 +79,7 @@ services:
     env_file:
       - firefly-iii.env
     environment:
+      - VIRTUAL_PORT=8080
       - VIRTUAL_HOST=money.darrylforbes.me
       - LETSENCRYPT_HOST=money.darrylforbes.me
     volumes:
@@ -86,8 +87,6 @@ services:
     networks:
       - firefly-iii-network
       - nginx-network
-    expose:
-      - 80
     depends_on:
       - firefly-iii-db
 
