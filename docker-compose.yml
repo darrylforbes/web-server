@@ -80,6 +80,7 @@ services:
       - firefly-iii.env
     environment:
       - VIRTUAL_HOST=money.darrylforbes.me
+      - LETSENCRYPT_HOST=money.darrylforbes.me
     volumes:
       - firefly-iii-upload:/var/www/html/storage/upload
     networks:
