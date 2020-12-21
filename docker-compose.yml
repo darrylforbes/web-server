@@ -71,8 +71,6 @@ services:
     networks:
       - personal-website-network
       - nginx-network
-    expose:
-      - 80
 
   firefly-iii:
     image: jc5x/firefly-iii:latest
