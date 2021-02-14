@@ -97,6 +97,15 @@ services:
     networks:
       - firefly-iii-network
 
+  kesey-nginx:
+    image: darrylforbes/kesey-nginx
+    environment:
+      - VIRTUAL_HOST=kesey.darrylforbes.me
+      - LETSENCRYPT_HOST=kesey.darrylforbes.me
+    networks:
+      - kesey-network
+      - nginx-network
+
 networks:
   nginx-network:
     name: nginx-network
@@ -106,6 +115,8 @@ networks:
     name: personal-website-network
   firefly-iii-network:
     name: firefly-iii-network
+  kesey-network:
+    name: kesey-network
 
 volumes:
   certs:
