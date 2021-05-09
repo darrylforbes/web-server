@@ -96,6 +96,8 @@ services:
       - firefly-iii-db:/var/lib/pgsql
     networks:
       - firefly-iii-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
 
   kesey-nginx:
     image: darrylforbes/kesey-nginx
