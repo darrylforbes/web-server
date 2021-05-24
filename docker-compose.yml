@@ -127,6 +127,8 @@ services:
       - "5432"
     networks:
       - open-when-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
 
   open-when-nginx:
     image: darrylforbes/open-when-nginx
