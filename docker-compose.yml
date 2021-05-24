@@ -108,6 +108,38 @@ services:
       - kesey-network
       - nginx-network
 
+  open-when-backend:
+    image: darrylforbes/open-when-backend
+    env_file: ./open-when.env
+    expose:
+      - "8000"
+    depends_on:
+      - open-when-db
+    networks:
+      - open-when-network
+
+  open-when-db:
+    image: postgres:12.6
+    env_file: ./open-when.env
+    volumes:
+      - open-when-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    networks:
+      - open-when-network
+
+  open-when-nginx:
+    image: darrylforbes/open-when-nginx
+    environment:
+      - VIRTUAL_HOST=openwhen.darrylforbes.me
+      - LETSENCRYPT_HOST=openwhen.darrylforbes.me
+    depends_on:
+      - open-when-backend
+      - open-when-db
+    networks:
+      - open-when-network
+      - nginx-network
+
 networks:
   nginx-network:
     name: nginx-network
@@ -119,6 +151,8 @@ networks:
     name: firefly-iii-network
   kesey-network:
     name: kesey-network
+  open-when-network:
+    name: open-when-network
 
 volumes:
   certs:
@@ -127,3 +161,4 @@ volumes:
   acme:
   firefly-iii-upload:
   firefly-iii-db:
+  open-when-data:
