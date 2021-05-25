@@ -93,7 +93,7 @@ services:
     env_file:
       - firefly-iii-db.env
     volumes:
-      - firefly-iii-db:/var/lib/pgsql
+      - firefly-iii-db:/var/lib/postgresql/data
     networks:
       - firefly-iii-network
     labels:
