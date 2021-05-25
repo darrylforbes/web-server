@@ -39,30 +39,6 @@ services:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_SCHEDULE=0 0 0 * * ?
 
-  happy-appy-api:
-    image: darrylforbes/happy-appy-api
-    env_file:
-      - ./happy-appy.env.prod
-    networks:
-      - happy-appy-network
-
-  happy-appy-frontend:
-    image: darrylforbes/happy-appy-frontend
-    networks:
-      - happy-appy-network
-
-  happy-appy-nginx:
-    image: darrylforbes/happy-appy-nginx
-    environment:
-      - VIRTUAL_HOST=happyappy.darrylforbes.me
-      - LETSENCRYPT_HOST=happyappy.darrylforbes.me
-    networks:
-      - happy-appy-network
-      - nginx-network
-    depends_on:
-      - happy-appy-api
-      - happy-appy-frontend
-
   personal-website-nginx:
     image: darrylforbes/personal-website-nginx
     environment:
@@ -145,8 +121,6 @@ services:
 networks:
   nginx-network:
     name: nginx-network
-  happy-appy-network:
-    name: happy-appy-network
   personal-website-network:
     name: personal-website-network
   firefly-iii-network:
