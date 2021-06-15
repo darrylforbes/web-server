@@ -68,7 +68,7 @@ services:
   firefly-iii-db:
     image: postgres:13-alpine
     env_file:
-      - firefly-iii-db.env
+      - firefly-iii.env
     volumes:
       - firefly-iii-db:/var/lib/postgresql/data
     networks:
