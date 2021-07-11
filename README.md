@@ -45,3 +45,15 @@
     * Copy over any needed env files
 
 7. Run "docker-compose up -d"
+
+## Terraform Details
+
+- Assumes existing VPC, security group, IAM role, and key pair
+
+## TODO
+
+- Use Ansible to automate configuration and start services
+- Add S3 backend to Terraform to keep track of state
+- Automate copying over environment files
+- Add data sources in terraform for expected pre-existing resources
+- Maybe add DNS server and point to it from Namecheap
