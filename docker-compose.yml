@@ -15,6 +15,7 @@ services:
       - 443:443
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+      - "com.centurylinklabs.watchtower.enable=false"
 
   nginx-proxy-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -30,6 +31,8 @@ services:
       - nginx-network
     depends_on:
       - nginx-proxy
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
 
   watchtower:
     image: containrrr/watchtower
