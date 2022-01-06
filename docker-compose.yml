@@ -53,7 +53,7 @@ services:
       - nginx-network
 
   firefly-iii:
-    image: jc5x/firefly-iii:latest
+    image: fireflyiii/core:latest
     env_file:
       - firefly-iii.env
     environment:
