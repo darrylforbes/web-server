@@ -79,6 +79,15 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
 
+  hyacinth-nginx:
+    image: darrylforbes/hyacinth-nginx
+    environment:
+      - VIRTUAL_HOST=hyacinth.darrylforbes.me
+      - LETSENCRYPT_HOST=hyacinth.darrylforbes.me
+    networks:
+      - hyacinth-network
+      - nginx-network
+
   kesey-nginx:
     image: darrylforbes/kesey-nginx
     environment:
@@ -129,6 +138,8 @@ networks:
     name: personal-website-network
   firefly-iii-network:
     name: firefly-iii-network
+  hyacinth-network:
+    name: hyacinth-network
   kesey-network:
     name: kesey-network
   open-when-network:
