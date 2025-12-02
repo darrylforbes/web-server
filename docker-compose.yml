@@ -52,42 +52,6 @@ services:
       - personal-website-network
       - nginx-network
 
-  firefly-iii:
-    image: fireflyiii/core:latest
-    env_file:
-      - firefly-iii.env
-    environment:
-      - VIRTUAL_PORT=8080
-      - VIRTUAL_HOST=money.darrylforbes.me
-      - LETSENCRYPT_HOST=money.darrylforbes.me
-    volumes:
-      - firefly-iii-upload:/var/www/html/storage/upload
-    networks:
-      - firefly-iii-network
-      - nginx-network
-    depends_on:
-      - firefly-iii-db
-
-  firefly-iii-db:
-    image: postgres:13-alpine
-    env_file:
-      - firefly-iii.env
-    volumes:
-      - firefly-iii-db:/var/lib/postgresql/data
-    networks:
-      - firefly-iii-network
-    labels:
-      - "com.centurylinklabs.watchtower.enable=false"
-
-  hyacinth-nginx:
-    image: darrylforbes/hyacinth-nginx
-    environment:
-      - VIRTUAL_HOST=hyacinth.darrylforbes.me
-      - LETSENCRYPT_HOST=hyacinth.darrylforbes.me
-    networks:
-      - hyacinth-network
-      - nginx-network
-
   kesey-nginx:
     image: darrylforbes/kesey-nginx
     environment:
@@ -136,10 +100,6 @@ networks:
     name: nginx-network
   personal-website-network:
     name: personal-website-network
-  firefly-iii-network:
-    name: firefly-iii-network
-  hyacinth-network:
-    name: hyacinth-network
   kesey-network:
     name: kesey-network
   open-when-network:
@@ -150,6 +110,4 @@ volumes:
   vhost:
   html:
   acme:
-  firefly-iii-upload:
-  firefly-iii-db:
   open-when-data:
